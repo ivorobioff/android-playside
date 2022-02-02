@@ -4,6 +4,7 @@ import android.text.Editable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import java.lang.IllegalStateException
+import androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged
 
 class FormModel: ViewModel() {
     private val fieldValues = mutableMapOf<String, MutableLiveData<String>>()
@@ -25,13 +26,14 @@ class FormModel: ViewModel() {
         return fieldValues[name]!!
     }
 
-    fun handleChange(field: String, editable: Editable) {
+    fun change(field: String): AfterTextChanged {
+        return AfterTextChanged { editable: Editable? ->
+            val input = editable?.toString() ?: ""
 
-        val input = editable.toString()
+            getValue(field).value = input
 
-        getValue(field).value = input
-
-        refreshConsistency()
+            refreshConsistency()
+        }
     }
 
     private fun refreshConsistency() {

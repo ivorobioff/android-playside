@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:afterTextChanged="@{(e) -> form.handleChange(ProfileFields.FIRST_NAME, e)}"
+                android:afterTextChanged="@{ form.change(ProfileFields.FIRST_NAME) }"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:afterTextChanged="@{(e) -> form.handleChange(ProfileFields.LAST_NAME, e)}"
+                android:afterTextChanged="@{ form.change(ProfileFields.LAST_NAME) }"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
