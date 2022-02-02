@@ -14,9 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        val form = ViewModelProvider(this).get(FormModel::class.java)
-
-        with(form) {
+        val form = ViewModelProvider(this).get(FormModel::class.java).apply {
             addField(ProfileFields.FIRST_NAME)
             addField(ProfileFields.LAST_NAME)
         }
